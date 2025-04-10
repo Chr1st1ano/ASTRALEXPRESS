@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery - Astral Express</title>
+    <!-- Bootstrap CSS (v5) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to bottom, #0d0d2b, #1d1d5b);
+        font-family: 'DIN', sans-serif;
+      }
+      h1 {
+        color: white;
+        text-align: left;
+        margin-top: 50px;
+        padding-left: 40px;
+        padding-bottom: 10px;
+      }
+      h2 {
+        font-family: 'DIN', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        color: #ffc107;
+      }
+
+      /* Gallery styles */
+      .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Increase the minimum size */
+        gap: 30px;
+        padding: 20px;
+      }
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 350px; /* Make images larger by increasing height */
+        transition: transform 0.3s ease, filter 0.3s ease;
+        border-radius: 10px;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.1); /* Enlarge image on hover */
+        filter: brightness(0.9);
+      }
+
+      /* Fullscreen modal */
+      .modal-content img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gallery - Astral Express</h1>
+    <h2>Explore Our Collection</h2>
+
+    <div class="gallery-container">
+      <!-- Gallery Item 1 -->
+      <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image="images/a.webp">
+        <img src="images/a.webp" alt="Gallery Image 1">
+      </div>
+      <!-- Gallery Item 2 -->
+      <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image="images/b.webp">
+        <img src="images/b.webp" alt="Gallery Image 2">
+      </div>
+      <!-- Gallery Item 3 -->
+      <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image="images/c.webp">
+        <img src="images/c.webp" alt="Gallery Image 3">
+      </div>
+      <!-- Gallery Item 4 -->
+      <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image="images/d.webp">
+        <img src="images/d.webp" alt="Gallery Image 4">
+      </div>
+    </div>
+
+    <!-- Modal for Fullscreen Image -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <img src="" alt="Full Image" id="modalImage">
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // JavaScript to update the modal image source when an image is clicked
+      var modal = document.getElementById('imageModal');
+      var modalImage = document.getElementById('modalImage');
+      modal.addEventListener('show.bs.modal', function (event) {
+        var imageElement = event.relatedTarget; // Image that triggered the modal
+        var imageSrc = imageElement.getAttribute('data-bs-image');
+        modalImage.src = imageSrc;
+      });
+    </script>
+  </body>
+</html>
